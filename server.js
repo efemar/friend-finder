@@ -78,3 +78,29 @@ app.post("/survey", function (req, res) {
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
+
+
+//Capturing data from survey questions
+$("#submit-survey").on("click", function(event) {
+    event.preventDefault();
+    var newFriend = {
+      name: $("#name").val().trim(),
+      photo: $("#photo").val().trim(),
+      score: [$("#question1").val().trim(), $("#question2").val().trim(),
+      $("#question3").val().trim(), $("#question4").val().trim(),
+      $("#question5").val().trim(), $("#question6").val().trim(),
+      $("#question7").val().trim(), $("#question8").val().trim(),
+      $("#question9").val().trim(), $("#question10").val().trim()]
+    };
+  
+//Saving data to friends.js file, performing match and displaying results
+    $.post("/survey", newFriend)
+      .then(function(data) {
+        console.log("add.html", data);  
+        if (data === "Added to the Waiting List") {
+          alert("Sorry...You have been added to the Waiting List");
+        }
+        else {alert("Adding new reservation...")}
+      });
+  });
+  
