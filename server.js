@@ -7,45 +7,68 @@ var path = require("path");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 3000;
+// var apiRouting = require("./app/routing/apiRoutes");
+// var htmlRouting = require("./app/routing/htmlRoutes");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// apiRouting(app);
+// htmlRouting(app);
+
 var friends = [
+  {
+      "name":"Ahmed",
+      "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+      "scores":[
+          5,
+          1,
+          4,
+          4,
+          5,
+          1,
+          2,
+          5,
+          4,
+          1
+        ]
+    }
+    ,
     {
-        "name":"Ahmed",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores":[
-            5,
-            1,
-            4,
-            4,
-            5,
-            1,
-            2,
-            5,
-            4,
-            1
-          ]
-      },
-      {
-        "name":"Fernando",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores":[
-            3,
-            2,
-            1,
-            1,
-            4,
-            2,
-            5,
-            3,
-            2,
-            5
-          ]
-      }
-    ];
+      "name":"Fernando",
+      "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+      "scores":[
+          1,
+          1,
+          1,
+          1,
+          4,
+          2,
+          5,
+          3,
+          2,
+          5
+        ]
+    }
+    ,
+    {
+      "name":"Elisa",
+      "photo":"https://pbs.twimg.com/profile_images/1080886966571487232/Fj5-uu88_400x400.jpg",
+      "scores":[
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+    }
+  ];
 
 
 
@@ -58,20 +81,49 @@ app.get("/survey", function (req, res) {
     res.sendFile(path.join(__dirname, "/app/public/survey.html"));
 });
 
-
 //API Friends
-app.get("/api/friends", function (req, res) {
-    res.json(table);
-});
+  app.get("/api/friends", function (req, res) {
+    res.json(friends);
+  });
+  
+  // Post  Route
+  app.post("/api/friends", function (req, res) {
+    var newFriend = req.body; 
+    var newFriendScores = req.body.scores;
+    var totalDifference = [];
 
-// Create New Reservations - takes in JSON input
-app.post("/survey", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body parsing middleware
-    var newFriend = req.body;
-    friends.push(newFriend)
+    function bestMatch() {
+      for (var t =0; t < friends.length; t++) {
+        for (var i = 0; i < friends[t].scores.length; i++) {
+           this["friendsScores"+i] = parseInt(friends[t].scores[i]);
+           this["newFriendScores"+i] = parseInt(req.body.scores[i]);
+           this["difference"+i] = Math.abs(this["friendsScores"+i] - this["newFriendScores"+i]);
+           this["totalDiff"+t] = this.difference0 + this.difference1 + this.difference2 + this.difference3 +
+           this.difference4 + this.difference5 + this.difference6 + this.difference7 + this.difference8 +
+           this.difference9;
+          }
+          totalDifference.push(this["totalDiff"+t]);
+        }
+      }
+      
+      //running bestMatch function
+      bestMatch();
 
-});
+      //finding the lowest number in the totalDifference array
+      const indexOfMinValue = totalDifference.indexOf(Math.min(...totalDifference));
+      var match = friends[indexOfMinValue];
+      friends.push(newFriend)
+      res.send(match)
+      
+      //friends.push(newFriend)
+      //adding newFriend to the friends array
+      //friends.push(newFriend)
+    
+      
+  });
+
+
+
 
 // Starts the server to begin listening
 // =============================================================
@@ -80,27 +132,5 @@ app.listen(PORT, function () {
 });
 
 
-//Capturing data from survey questions
-$("#submit-survey").on("click", function(event) {
-    event.preventDefault();
-    var newFriend = {
-      name: $("#name").val().trim(),
-      photo: $("#photo").val().trim(),
-      score: [$("#question1").val().trim(), $("#question2").val().trim(),
-      $("#question3").val().trim(), $("#question4").val().trim(),
-      $("#question5").val().trim(), $("#question6").val().trim(),
-      $("#question7").val().trim(), $("#question8").val().trim(),
-      $("#question9").val().trim(), $("#question10").val().trim()]
-    };
-  
-//Saving data to friends.js file, performing match and displaying results
-    $.post("/survey", newFriend)
-      .then(function(data) {
-        console.log("add.html", data);  
-        if (data === "Added to the Waiting List") {
-          alert("Sorry...You have been added to the Waiting List");
-        }
-        else {alert("Adding new reservation...")}
-      });
-  });
-  
+
+
