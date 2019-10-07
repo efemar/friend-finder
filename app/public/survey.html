@@ -251,14 +251,11 @@
         <br>
 
         <!-- Modal content -->
-        <div id="results">
+        <div id="results1">
             <div class="content">
-                <h2>Best Match</h2>
+                <h2 id="results">Best Match</h2>
             </div>
-            <div class="body1" id="body">
-                <!-- <h2 id="match-name"></h2>
-                <img id="match-img" src='sdfds'> -->
-            </div>
+            
         </div>
 
 
@@ -277,9 +274,11 @@
     <script type="text/javascript">
         //Capturing data from survey questions
 
+        $(document).ready(function () {
 
         $("#submit-survey").on("click", function (event) {
             event.preventDefault();
+            $("#results").empty();
 
             for (var i = 0; i < 11; i++) {
                 if ($("#question" + i).val() == "0") {
@@ -310,20 +309,20 @@
             $.post("/api/friends", newFriend)
                 .then(function (data) {
 
-                    console.log("add.html", data);
+                    console.log("add.html", data.name);
 
-
-                    var results = $("#body");
+                    var best = $("#results")
+                    var liel = $("<div id='body'>");
 
                     // Then display the fields in the HTML (Section Name, Date, URL)
                 
-
-                    results.append(
-                        $("<h2 id='match-name'> Name: " + data.name + "</h2>"),
-                        $("img id='match-img' src='" + data.photo + "''" + ">")
+                    liel.append(
+                        $("<h5 id='match-name'> Name: " + data.name + "</h5>"),
+                        $("<img id='match-img' src='" + data.photo + "''" + ">")
                     );
 
-                    
+                    best.append(liel);
+
                     // openModal();
                     // closeModal();
                     // outsideClick();
@@ -333,30 +332,8 @@
                 });
 
         });
-            // var modalBtn = document.getElementById('submit-survey');
-
-
-            // modalBtn.addEventListener('click', openModal);
-
-            // closeBtn.addEventListener('click', closeModal);
-
-            // window.addEventListener('click', outsideClick);
-
-            // function openModal() {
-            //     modal.style.display = 'block';
-            // }
-
-            // function closeModal() {
-            //     modal.style.display = 'none';
-            // }
-
-            // function outsideClick(e) {
-            //     if (e.target == modal) {
-            //         modal.style.display = 'none';
-            //     }
-            // }
-
-
+            
+    })
     </script>
 
 

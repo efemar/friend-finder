@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+## Overview of how this app works and why it was built
 
-You can use the [editor on GitHub](https://github.com/efemar/friend-finder/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This app was built to connect people around the world that are searching for the most compatible friendshit match.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## How the app is organized
 
-### Markdown
+Users can click on the deployed link and will be taken to the home page with a "Go to Survey" button will be displayed.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The second page is a survey page with 10 multiple choice questions to be answered to find out how compatible the user is when compared to previous app users.
 
-```markdown
-Syntax highlighted code block
+## How to use this app
 
-# Header 1
-## Header 2
-### Header 3
+1) Users should should click on the "Go to Survey"
 
-- Bulleted
-- List
+2) Answer all of the questions, including name and adding a link to a photo
 
-1. Numbered
-2. List
+3) Click on submit button
 
-**Bold** and _Italic_ and `Code` text
+4) Results showing the best match are displayed at the bottom of the page
 
-[Link](url) and ![Image](src)
-```
+## Technologies used in the App
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+This app was built using Html, CSS and javascript.
 
-### Jekyll Themes
+It is deployed on heroku and able to capture and store user's data for future searches to find the best match.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/efemar/friend-finder/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Link to the deployed version of the app
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+## Contributor
+This app was built by Elisa Marques, github: https://github.com/efemar?tab=repositories
