@@ -10,7 +10,7 @@ The second page is a survey page with 10 multiple choice questions to be answere
 
 ## How to use this app
 
-1) Users should should click on the "Go to Survey"
+1) Users should click on the "Go to Survey"
 
 2) Answer all of the questions, including name and adding a link to a photo
 
