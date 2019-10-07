@@ -4,7 +4,7 @@ This app was built to connect people around the world that are searching for the
 
 ## How the app is organized
 
-Users can click on the deployed link and will be taken to the home page with a "Go to Survey" button will be displayed.
+Users can click on the deployed link and they will be taken to the home page where a "Go to Survey" button will be displayed.
 
 The second page is a survey page with 10 multiple choice questions to be answered to find out how compatible the user is when compared to previous app users.
 
@@ -26,7 +26,7 @@ It is deployed on heroku and able to capture and store user's data for future se
 
 ## Link to the deployed version of the app
 
-
+https://evening-escarpment-76910.herokuapp.com/
 
 ## Contributor
 This app was built by Elisa Marques, github: https://github.com/efemar?tab=repositories
