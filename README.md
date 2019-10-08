@@ -1,6 +1,6 @@
 ## Overview of how this app works and why it was built
 
-This app was built to connect people around the world that are searching for the most compatible friendshit match.
+This app was built to connect people around the world that are searching for the most compatible friendship match.
 
 ## How the app is organized
 
